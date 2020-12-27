@@ -22,6 +22,7 @@ import com.youth.banner.loader.ImageLoader;
 import java.util.ArrayList;
 
 public class LanGeAdapter extends DelegateAdapter.Adapter {
+
     private ColumnLayoutHelper columnLayoutHelper;
     private ArrayList<HomeBean.DataDTO.BannerDTO> banner;
 

@@ -20,11 +20,11 @@ import java.util.ArrayList;
 
 public class LanGetowAdapter extends DelegateAdapter.Adapter {
     private ColumnLayoutHelper columnLayoutHelper;
-    private ArrayList<HomeBean.DataDTO.ChannelDTO> channelDTOS;
+    private ArrayList<HomeBean.DataDTO.ChannelDTO> channel;
 
-    public LanGetowAdapter(ColumnLayoutHelper columnLayoutHelper, ArrayList<HomeBean.DataDTO.ChannelDTO> channelDTOS) {
+    public LanGetowAdapter(ColumnLayoutHelper columnLayoutHelper, ArrayList<HomeBean.DataDTO.ChannelDTO> channel) {
         this.columnLayoutHelper = columnLayoutHelper;
-        this.channelDTOS = channelDTOS;
+        this.channel = channel;
     }
 
     @Override
@@ -42,14 +42,14 @@ public class LanGetowAdapter extends DelegateAdapter.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ChannelViewHolder channelViewHolder = (ChannelViewHolder) holder;
-        HomeBean.DataDTO.ChannelDTO channelDTO = channelDTOS.get(position);
+        HomeBean.DataDTO.ChannelDTO channelDTO = channel.get(position);
         channelViewHolder.title.setText(channelDTO.getName());
         Glide.with(channelViewHolder.image).load(channelDTO.getIcon_url()).into(channelViewHolder.image);
     }
 
     @Override
     public int getItemCount() {
-        return channelDTOS.size();
+        return channel.size();
     }
 
     private class ChannelViewHolder extends RecyclerView.ViewHolder {
