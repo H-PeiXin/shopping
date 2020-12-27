@@ -11,6 +11,7 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.example.mvplibrary.base.BaseFragment;
 import com.example.netease.R;
 import com.example.netease.adapter.LanGeAdapter;
+import com.example.netease.adapter.LanGetowAdapter;
 import com.example.netease.adapter.MyAdapter;
 import com.example.netease.bean.HomeBean;
 import com.example.netease.contract.HomeContract;
@@ -34,6 +35,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     private VirtualLayoutManager layoutManager;
     private MyAdapter myAdapter;
     private LanGeAdapter lanGeAdapter;
+    private LanGetowAdapter lanGetowAdapter;
 
     @Override
     protected void initData() {
@@ -59,6 +61,20 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         //通栏
         myAdapter = initTongLan();
         lanGeAdapter = initLanGe();
+        lanGetowAdapter = initChannel();
+    }
+
+    private LanGetowAdapter initChannel() {
+        ColumnLayoutHelper columnLayoutHelper = new ColumnLayoutHelper();
+        //公共属性
+        columnLayoutHelper.setItemCount(channelDTOS.size());// 设置布局里Item个数
+        columnLayoutHelper.setPadding(20, 50, 20, 0);// 设置LayoutHelper的子元素相对LayoutHelper边缘的距离
+        columnLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        columnLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+
+        LanGetowAdapter lanGetowAdapter = new LanGetowAdapter(columnLayoutHelper, channelDTOS);
+
+        return lanGetowAdapter;
     }
 
     private LanGeAdapter initLanGe() {
